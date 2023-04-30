@@ -1,0 +1,6 @@
+rootProject.name = 'StockMarket'
+
+include("stock-market-server")
+include("stock-market-client")
+include("stock-market-domain")
+

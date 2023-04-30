@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id("org.springframework.boot") version "3.0.5"
+    id("io.spring.dependency-management") version "1.1.0"
+    id("com.bmuschko.docker-spring-boot-application") version "9.2.1"
+}
+
+group = "ru.itmo"
+version = "0.0.1-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":stock-market-domain")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:junit-jupiter")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+ext {
+    set("testcontainersVersion", "1.17.6")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+    }
+}
+
+docker {
+    springBootApplication {
+        baseImage = "openjdk:17"
+        ports = [9090, 8080]
+    }
+}

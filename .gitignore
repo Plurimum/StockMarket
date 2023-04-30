@@ -1,0 +1,10 @@
+# Project exclude paths
+/.gradle/
+/stock-market-client/build/
+/stock-market-client/build/classes/java/main/
+/stock-market-client/build/classes/java/test/
+/stock-market-domain/build/
+/stock-market-domain/build/classes/java/main/
+/stock-market-server/build/
+/stock-market-server/build/classes/java/main/
+/stock-market-server/build/classes/java/test/
